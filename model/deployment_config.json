@@ -1,0 +1,53 @@
+{
+    "model_name": "XGBoost",
+    "model_file": "kpk_flood_susceptibility_xgboost.joblib",
+    "target": {
+        "0": "non_flood",
+        "1": "flood"
+    },
+    "original_features": [
+        "aspect",
+        "curvature",
+        "distance_to_drainage",
+        "distance_to_rivers",
+        "elevation",
+        "ndvi",
+        "rainfall_frequency",
+        "slope",
+        "twi"
+    ],
+    "engineered_features": [
+        "curvature",
+        "elevation",
+        "ndvi",
+        "rainfall_frequency",
+        "slope",
+        "twi",
+        "aspect_sin",
+        "aspect_cos",
+        "is_flat",
+        "log_distance_to_drainage",
+        "log_distance_to_rivers"
+    ],
+    "feature_engineering": {
+        "aspect_sin": "sin(degrees_to_radians(aspect))",
+        "aspect_cos": "cos(degrees_to_radians(aspect))",
+        "is_flat": "1 if slope <= 0.1 else 0",
+        "log_distance_to_drainage": "log1p(distance_to_drainage)",
+        "log_distance_to_rivers": "log1p(distance_to_rivers)"
+    },
+    "spatial_group": "spatial_grid_id",
+    "test_metrics": {
+        "accuracy": 0.8896,
+        "precision": 0.8913,
+        "recall": 0.8798,
+        "f1": 0.8855,
+        "roc_auc": 0.9537
+    },
+    "cv": {
+        "method": "StratifiedGroupKFold",
+        "folds": 5,
+        "roc_auc": 0.9515
+    },
+    "prediction_note": "Output is historical flood susceptibility, not real-time flood forecasting."
+}

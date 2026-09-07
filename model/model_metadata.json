@@ -1,0 +1,46 @@
+{
+    "model_name": "XGBoost",
+    "task": "Binary flood susceptibility classification",
+    "target": "target",
+    "original_features": [
+        "aspect",
+        "curvature",
+        "distance_to_drainage",
+        "distance_to_rivers",
+        "elevation",
+        "ndvi",
+        "rainfall_frequency",
+        "slope",
+        "twi"
+    ],
+    "engineered_features": [
+        "curvature",
+        "elevation",
+        "ndvi",
+        "rainfall_frequency",
+        "slope",
+        "twi",
+        "aspect_sin",
+        "aspect_cos",
+        "is_flat",
+        "log_distance_to_drainage",
+        "log_distance_to_rivers"
+    ],
+    "spatial_group": "spatial_grid_id",
+    "training_samples": 9631,
+    "test_samples": 2383,
+    "cv_folds": 5,
+    "cv_type": "StratifiedGroupKFold",
+    "cv_roc_auc": 0.9515,
+    "test_metrics": {
+        "accuracy": 0.8896,
+        "precision": 0.8913,
+        "recall": 0.8798,
+        "f1": 0.8855,
+        "roc_auc": 0.9537
+    },
+    "random_state": 42,
+    "python_version": "3.13.15",
+    "sklearn_version": "1.6.1",
+    "xgboost_version": "3.4.1"
+}
