@@ -4,3 +4,4 @@ numpy==1.26.4
 xgboost==3.0.0
 earthengine-api==1.5.9
 google-auth==2.37.0
+uvicorn==0.30.0
